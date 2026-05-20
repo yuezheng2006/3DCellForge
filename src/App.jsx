@@ -113,7 +113,7 @@ function App() {
   const [activePanel, setActivePanel] = useState(null)
   const [inspectorOpen, setInspectorOpen] = useState(false)
   const [demoMode, setDemoMode] = useState(false)
-  const [toast, setToast] = useState('3D Model Studio ready')
+  const [toast, setToast] = useState('Auto Showroom 3D ready')
   const [favoriteKey, setFavoriteKey] = useState(() => initialUiStateRef.current.favoriteKey)
   const [selectedMicroscope, setSelectedMicroscope] = useState(() => initialUiStateRef.current.selectedMicroscope)
   const [uploadedImage, setUploadedImage] = useState(() => getUploadPreviewFromCustomCells(initialCustomCellsRef.current))

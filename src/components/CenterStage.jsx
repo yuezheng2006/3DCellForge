@@ -394,7 +394,7 @@ function DemoShowcaseOverlay({ cell, quality, referenceImageUrl, motionProfile, 
   return (
     <div className="demo-showcase-overlay">
       <div className="demo-showcase-title">
-        <span>3D Model Studio</span>
+        <span>Auto Showroom 3D</span>
         <strong>{cell.name}</strong>
         <small>{quality.providerLabel} · {quality.hasGlb ? 'GLB asset' : quality.status} · {quality.verdict} · {motionProfile.label}</small>
         <p>{sceneProfile.summary}</p>

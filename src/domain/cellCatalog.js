@@ -105,15 +105,26 @@ export function getGenerationPrompt(cell) {
   }
 
   return [
-    `A high quality 3D model generated from the uploaded reference image named ${cell.name}.`,
+    `A high quality 3D car model generated from the uploaded reference image named ${cell.name}.`,
     'Make it a single integrated object, not a flat relief, not a display base.',
-    'Preserve the recognizable silhouette, major volumes, surface details, and material separation.',
-    'Style: polished interactive 3D studio asset, clean PBR materials, soft studio lighting.',
+    'Preserve the recognizable vehicle silhouette, body proportions, surface details, and material separation.',
+    'Style: polished interactive 3D automotive studio asset, clean PBR materials, showroom lighting.',
   ].join(' ')
 }
 
+const CAR_MODEL_URLS = {
+  plant: '/generated-models/tripo-plant-car.glb',
+  'white-blood': '/generated-models/tripo-white-blood-car.glb',
+  neuron: '/generated-models/tripo-neuron-car.glb',
+  epithelial: '/generated-models/tripo-epithelial-car.glb',
+  bacteria: '/generated-models/tripo-bacteria-car.glb',
+  animal: '/generated-models/tripo-animal-car.glb',
+  muscle: '/generated-models/tripo-muscle-car.glb',
+}
+
 export function getGeneratedModelUrl(cell) {
-  return cell.custom ? cell.generation?.modelUrl || '' : ''
+  if (cell.custom) return cell.generation?.modelUrl || ''
+  return CAR_MODEL_URLS[cell.id] || ''
 }
 
 export function cleanFileName(fileName) {
@@ -122,12 +133,13 @@ export function cleanFileName(fileName) {
 
 export function inferCellTemplate(fileName) {
   const name = fileName.toLowerCase()
-  if (name.includes('plant') || name.includes('leaf') || name.includes('chloroplast')) return 'plant'
-  if (name.includes('bacteria') || name.includes('bacillus') || name.includes('microbe')) return 'bacteria'
-  if (name.includes('neuron') || name.includes('nerve')) return 'neuron'
-  if (name.includes('muscle') || name.includes('fiber')) return 'muscle'
-  if (name.includes('epithelial') || name.includes('tissue')) return 'epithelial'
-  if (name.includes('blood') || name.includes('immune') || name.includes('wbc')) return 'white-blood'
+  if (name.includes('sedan') || name.includes('plant') || name.includes('leaf') || name.includes('chloroplast')) return 'plant'
+  if (name.includes('suv') || name.includes('crossover') || name.includes('blood') || name.includes('immune') || name.includes('wbc')) return 'white-blood'
+  if (name.includes('sports') || name.includes('sport') || name.includes('super') || name.includes('neuron') || name.includes('nerve')) return 'neuron'
+  if (name.includes('pickup') || name.includes('truck') || name.includes('epithelial') || name.includes('tissue')) return 'epithelial'
+  if (name.includes('compact') || name.includes('hatch') || name.includes('city') || name.includes('bacteria') || name.includes('bacillus') || name.includes('microbe')) return 'bacteria'
+  if (name.includes('muscle') || name.includes('pony') || name.includes('fiber')) return 'muscle'
+  if (name.includes('luxury') || name.includes('premium') || name.includes('executive')) return 'animal'
   return 'animal'
 }
 
