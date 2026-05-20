@@ -1,33 +1,33 @@
-# 3D Model Studio
+# Auto Showroom 3D
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-AI-powered interactive 3D model generation, inspection, and presentation studio.
+AI-powered interactive 3D automotive showroom for exploring, customizing, and showcasing vehicles in stunning detail.
 
-3D Model Studio is a React + Three.js prototype for turning uploaded reference images or GLB files into a polished interactive 3D workspace. It supports live WebGL orbit controls, a left model library / center stage / right tools workbench, screenshots, GLB export, collapsed upload history, demo presentation mode, a generation queue, and optional image-to-3D providers for generating real 3D models from uploaded reference images.
+Auto Showroom 3D is a React + Three.js application for turning automotive reference images or GLB files into a polished interactive 3D workspace. It features live WebGL orbit controls, a comprehensive vehicle library, center stage presentation, detailed inspection tools, screenshots, GLB export, and AI-powered image-to-3D generation for creating realistic car models from photos.
 
 ## Demo
 
-[![3D Model Studio demo](docs/demo/3DCellForge-demo-cover.jpg)](docs/demo/3DCellForge-demo-2026-05-10.mp4)
+[![Auto Showroom 3D demo](docs/demo/3DCellForge-demo-cover.jpg)](docs/demo/3DCellForge-demo-2026-05-10.mp4)
 
 Open the demo video: [Demo MP4](docs/demo/3DCellForge-demo-2026-05-10.mp4)
 
 ## Features
 
-- Interactive model viewer built with React Three Fiber.
-- Three-column workbench: Model Library on the left, WebGL stage in the center, asset/generation tools on the right.
-- Drag to rotate, scroll to zoom, isolate structure parts, inspect model details, and export the current scene.
-- Object-aware inspector with inferred category, source, provider state, material focus, demo value, and tags for vehicles, aircraft, vessels, products, artifacts, and organic specimens.
-- Model quality score for generated GLBs, including file size, triangle count, texture count, and demo readiness.
-- Demo Mode for screenshots and screen recordings: hides side panels, uses object-aware cinematic camera paths, and shows a clean presentation overlay.
-- Productized Model Library drawer with source thumbnails, provider/status, task id, GLB URL actions, comparison, and delete controls.
-- Saved Assets stays collapsed by default, while the active generated/imported asset stays pinned and clickable.
-- Generated/imported models are restored after refresh through IndexedDB, with localStorage as a compact fallback.
-- Generic part detail drawer, asset references, comparison panel, notes, gallery actions, logs, saved projects, and a compact generation queue.
-- Hyper3D, Tripo, Fal.ai, Hunyuan3D, JS Depth, and Local GLB generation/import modes.
-- Cached demo GLB models for offline-friendly screenshots and demos.
-- Auxiliary Khronos glTF reference models for GLB loader and PBR material checks.
-- API key stays server-side in `.env.local`; it is never exposed to the frontend bundle.
+- Interactive 3D vehicle viewer built with React Three Fiber
+- Three-column workbench: Vehicle Library on the left, WebGL stage in the center, inspection tools on the right
+- Drag to rotate, scroll to zoom, isolate vehicle components (powertrain, wheels, exhaust, body, interior)
+- Detailed vehicle specifications with performance data, engine specs, and design highlights
+- AI-powered vehicle recognition with automatic categorization and metadata extraction
+- Model quality scoring for generated GLBs, including file size, polygon count, texture analysis, and presentation readiness
+- Demo Mode for presentations: hides side panels, uses cinematic camera paths, and shows clean overlay
+- Comprehensive Vehicle Library with thumbnails, generation status, provider info, and comparison tools
+- Generated/imported models persist after refresh through IndexedDB with localStorage fallback
+- Vehicle component inspector, comparison panel, specifications notebook, gallery, logs, and generation queue
+- Multiple 3D generation providers: Hyper3D Rodin, Tripo, Fal.ai, Hunyuan3D, JS Depth, and Local GLB import
+- Pre-loaded showcase vehicles: Porsche 911 Turbo S, Mercedes-AMG G63, Toyota GR Supra, Ford F-150 Raptor, Tesla Model S Plaid, BMW i8 Roadster, Dodge Challenger Hellcat
+- Khronos glTF reference models for material and transparency testing
+- API keys stay server-side in `.env.local`; never exposed to the frontend bundle
 
 ## Tech Stack
 
@@ -37,9 +37,9 @@ Open the demo video: [Demo MP4](docs/demo/3DCellForge-demo-2026-05-10.mp4)
 - React Three Fiber
 - Drei
 - Framer Motion
-- Tripo API optional backend
-- Fal.ai optional backend
-- Hunyuan3D local API optional backend
+- Tripo API (optional backend)
+- Fal.ai (optional backend)
+- Hunyuan3D local API (optional backend)
 
 ## Quick Start
 

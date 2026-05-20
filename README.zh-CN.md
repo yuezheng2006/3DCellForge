@@ -1,34 +1,33 @@
-# 3D Model Studio
+# 3D汽车展厅
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-AI 驱动的交互式 3D 模型生成、检查和演示工作台。
+AI 驱动的交互式 3D 汽车展厅，用于探索、定制和展示精美的汽车模型。
 
-3D Model Studio 是一个 React + Three.js 原型，用于把上传图片或 GLB 文件变成可交互的 3D 模型工作区。它支持 WebGL 拖拽旋转、滚轮缩放、左侧模型库 / 中央 3D 舞台 / 右侧工具区、截图、GLB 导出、历史上传默认收起、Demo 演示模式、生成队列，以及通过 Hyper3D / Tripo / Fal.ai / Hunyuan3D / JS Depth / 本地模型导入生成或加载 3D 模型。
+3D汽车展厅是一个 React + Three.js 应用，用于将汽车参考图片或 GLB 文件转换成可交互的 3D 工作区。它支持 WebGL 拖拽旋转、滚轮缩放、完整的车型库、中央舞台展示、详细检查工具、截图、GLB 导出，以及 AI 驱动的图片转 3D 功能，可从照片生成逼真的汽车模型。
 
 ## 演示视频
 
-[![3D Model Studio 演示视频](docs/demo/3DCellForge-demo-cover.jpg)](docs/demo/3DCellForge-demo-2026-05-10.mp4)
+[![3D汽车展厅演示视频](docs/demo/3DCellForge-demo-cover.jpg)](docs/demo/3DCellForge-demo-2026-05-10.mp4)
 
 打开视频文件：[演示 MP4](docs/demo/3DCellForge-demo-2026-05-10.mp4)
 
-## 功能
+## 功能特性
 
-- 基于 React Three Fiber 的交互式模型查看器。
-- 三栏工作台：左侧 Model Library，中间 WebGL 主舞台，右侧素材和生成工具。
-- 支持拖拽旋转、滚轮缩放、结构隔离、部件 Inspect 和场景导出。
-- 对象级说明面板会根据资产名称和生成元数据推断类别、来源、Provider 状态、材质重点、演示价值和标签，覆盖车辆、飞机、船舰、产品、文物和有机标本。
-- 模型质量评分会展示 GLB 文件大小、三角面数、贴图数量和演示可用性。
-- Demo Mode 会隐藏左右工具区、根据物体类型使用不同运镜，并显示干净的演示信息层，适合截图和录屏。
-- Model Library 抽屉升级为资产库视图，包含源图预览、Provider / 状态、任务 ID、GLB URL 操作、Provider 对比和删除入口。
-- Saved Assets 默认收起，当前激活的生成 / 导入资产会固定显示并可直接点击打开。
-- 生成 / 导入成功的模型会写入 IndexedDB，刷新页面后会自动恢复；localStorage 只做轻量兜底。
-- 自定义上传记录支持删除，并同步清理相关本地数据。
-- 通用部件详情抽屉、素材参考、对比面板、模型笔记、图库操作、日志、项目保存和生成队列。
-- 支持 Hyper3D、Tripo、Fal.ai、Hunyuan3D、JS Depth 和 Local GLB 多种模式。
-- 生成后的 GLB 会缓存到本地，方便后续演示和截图。
-- 内置 Khronos glTF 辅助参考模型，用于检查 GLB 加载和 PBR 材质表现。
-- API Key 只放在服务端 `.env.local`，不会暴露到前端包里。
+- 基于 React Three Fiber 的交互式 3D 汽车查看器
+- 三栏工作台：左侧车型库，中间 WebGL 主舞台，右侧检查工具
+- 拖拽旋转、滚轮缩放、隔离车辆部件（动力总成、轮毂、排气、车身、内饰）
+- 详细的车辆规格，包含性能数据、发动机参数和设计亮点
+- AI 智能识别车辆，自动分类和提取元数据
+- 模型质量评分，包括文件大小、多边形数量、纹理分析和展示就绪度
+- 演示模式：隐藏侧边栏，使用电影级运镜路径，显示简洁的展示界面
+- 完整的车型库，包含缩略图、生成状态、提供商信息和对比工具
+- 生成/导入的模型通过 IndexedDB 持久化，刷新后自动恢复，localStorage 作为备用
+- 车辆部件检查器、对比面板、规格笔记本、图库、日志和生成队列
+- 多种 3D 生成提供商：Hyper3D Rodin、Tripo、Fal.ai、Hunyuan3D、JS Depth 和本地 GLB 导入
+- 预装展示车型：保时捷 911 Turbo S、奔驰 AMG G63、丰田 GR Supra、福特 F-150 Raptor、特斯拉 Model S Plaid、宝马 i8 Roadster、道奇 Challenger Hellcat
+- Khronos glTF 参考模型，用于材质和透明度测试
+- API 密钥保存在服务端 `.env.local`，不会暴露到前端包
 
 ## 技术栈
 
@@ -38,9 +37,9 @@ AI 驱动的交互式 3D 模型生成、检查和演示工作台。
 - React Three Fiber
 - Drei
 - Framer Motion
-- Tripo API 可选后端
-- Fal.ai 可选后端
-- Hunyuan3D 本地 API 可选后端
+- Tripo API（可选后端）
+- Fal.ai（可选后端）
+- Hunyuan3D 本地 API（可选后端）
 
 ## 快速开始
 
