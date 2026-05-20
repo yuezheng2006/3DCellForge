@@ -113,11 +113,11 @@ export function getGenerationPrompt(cell) {
 }
 
 const CAR_MODEL_URLS = {
-  plant: '/generated-models/tripo-plant-car.glb',
-  'white-blood': '/generated-models/tripo-white-blood-car.glb',
-  neuron: '/generated-models/tripo-neuron-car.glb',
-  epithelial: '/generated-models/tripo-epithelial-car.glb',
-  bacteria: '/generated-models/tripo-bacteria-car.glb',
+  plant: '/generated-models/porsche-911-turbo-s.glb',
+  'white-blood': '/generated-models/mercedes-amg-g63.glb',
+  neuron: '/generated-models/toyota-gr-supra.glb',
+  epithelial: '/generated-models/ford-f150-raptor.glb',
+  bacteria: '/generated-models/tesla-model-s-plaid.glb',
   animal: '/generated-models/tripo-animal-car.glb',
   muscle: '/generated-models/tripo-muscle-car.glb',
 }

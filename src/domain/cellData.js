@@ -1,12 +1,12 @@
 import plantCellRender from '../assets/cell-plant-render.png'
 
 export const CELL_TYPES = [
-  { id: 'plant', name: 'Sedan', type: 'Showroom Model', accent: '#82b366' },
-  { id: 'white-blood', name: 'SUV', type: 'Showroom Model', accent: '#7e6edb' },
-  { id: 'neuron', name: 'Sports Car', type: 'Showroom Model', accent: '#8b5cf6' },
-  { id: 'epithelial', name: 'Pickup Truck', type: 'Showroom Model', accent: '#e07a7a' },
-  { id: 'bacteria', name: 'Compact', type: 'Showroom Model', accent: '#5fbf9f' },
-  { id: 'animal', name: 'Luxury', type: 'Showroom Model', accent: '#459ccf' },
+  { id: 'plant', name: 'Porsche 911 Turbo S', type: 'Sports Car', accent: '#82b366' },
+  { id: 'white-blood', name: 'Mercedes-AMG G63', type: 'Luxury SUV', accent: '#7e6edb' },
+  { id: 'neuron', name: 'Toyota GR Supra', type: 'Sports Car', accent: '#8b5cf6' },
+  { id: 'epithelial', name: 'Ford F-150 Raptor', type: 'Pickup Truck', accent: '#e07a7a' },
+  { id: 'bacteria', name: 'Tesla Model S Plaid', type: 'Electric Sedan', accent: '#5fbf9f' },
+  { id: 'animal', name: 'Luxury Sedan', type: 'Showroom Model', accent: '#459ccf' },
   { id: 'muscle', name: 'Muscle Car', type: 'Showroom Model', accent: '#d25762' },
 ]
 
