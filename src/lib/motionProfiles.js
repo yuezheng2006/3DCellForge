@@ -27,9 +27,9 @@ const MOTION_PROFILES = {
   },
   specimen: {
     id: 'specimen',
-    label: 'Specimen orbit',
+    label: 'Design orbit',
     durationMs: 8200,
-    description: 'Close inspection orbit for biological and organic subjects.',
+    description: 'Close inspection orbit for concept vehicles and design studies.',
   },
   product: {
     id: 'product',

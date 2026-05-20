@@ -111,7 +111,7 @@ export const KHRONOS_REFERENCE_CELLS = [
       taskId: 'khronos-mosquito-amber',
       modelUrl: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/MosquitoInAmber/glTF-Binary/MosquitoInAmber.glb',
       rawModelUrl: '',
-      message: 'Remote Khronos biological GLB reference. This model is larger and may take longer to load.',
+      message: 'Remote Khronos GLB reference. This model is larger and may take longer to load.',
     },
   },
 ]

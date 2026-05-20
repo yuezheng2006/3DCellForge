@@ -71,17 +71,17 @@ export const ASSET_CATEGORIES = [
   },
   {
     id: 'specimen',
-    label: 'Organic Specimen',
+    label: 'Concept Vehicle',
     motionProfile: 'specimen',
     sceneProfile: 'specimen',
-    keywords: ['cell', 'biology', 'biological', 'organism', 'specimen', 'plant', 'neuron', 'bacteria', 'blood', 'epithelial', 'muscle', 'mosquito', '细胞', '生物', '植物', '神经', '细菌', '肌肉'],
-    strongKeywords: ['cell', 'biology', 'biological', 'specimen', '细胞', '生物'],
-    material: 'Soft translucent surfaces, organic volume, color-separated internal forms',
-    scale: 'Specimen-style asset',
-    inspectionFocus: 'overall volume, translucent surface, internal clusters',
-    description: 'An organic/specimen asset. The useful read is the overall volume, translucent surface, and clustered internal detail rather than exact biological accuracy.',
-    value: 'Use close orbit, clean rim light, and slower zooms. This works best as an educational inspection view.',
-    tags: ['specimen', 'organic', 'inspection orbit', 'soft volume', 'education'],
+    keywords: ['concept', 'prototype', 'design', 'study', 'experimental', 'showcase', 'demo', 'preview', '概念', '原型', '设计', '展示'],
+    strongKeywords: ['concept', 'prototype', 'experimental', 'showcase', '概念', '原型'],
+    material: 'Experimental surfaces, innovative forms, color-separated design elements',
+    scale: 'Concept vehicle asset',
+    inspectionFocus: 'overall form, surface treatment, design details',
+    description: 'A concept/experimental vehicle asset. The useful read is the overall form language, surface treatment, and innovative design details rather than production accuracy.',
+    value: 'Use close orbit, clean rim light, and slower zooms. This works best as a design showcase view.',
+    tags: ['concept', 'experimental', 'inspection orbit', 'design study', 'showcase'],
   },
 ]
 
@@ -123,10 +123,10 @@ export const SCENE_PROFILES = {
   },
   specimen: {
     id: 'specimen',
-    label: 'Specimen Lab',
-    summary: 'Soft lab volume, microscope-style depth lines, and close orbit.',
-    environment: 'lab orbit',
-    badges: ['rim light', 'inspection', 'soft volume'],
+    label: 'Design Studio',
+    summary: 'Clean studio lighting, design inspection angles, and close detail orbit.',
+    environment: 'design studio',
+    badges: ['rim light', 'inspection', 'detail focus'],
   },
 }
 

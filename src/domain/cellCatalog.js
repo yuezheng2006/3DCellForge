@@ -46,7 +46,7 @@ export function getCellProfile(cellId, customCells = getStoredCustomCells()) {
       return {
         ...baseProfile,
         summary: customCell.referenceSummary,
-        comparison: `${customCell.name} is a Khronos glTF reference asset for inspecting material behavior and GLB loader compatibility, not a biological teaching model.`,
+        comparison: `${customCell.name} is a Khronos glTF reference asset for inspecting material behavior and GLB loader compatibility, not a production vehicle model.`,
         occurs: customCell.referenceSource,
         organelles: baseProfile.organelles,
       }
