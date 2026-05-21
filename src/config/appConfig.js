@@ -1,11 +1,11 @@
-export const SETTINGS_STORAGE_KEY = 'bio-demo-settings'
-export const GALLERY_STORAGE_KEY = 'bio-demo-gallery'
-export const GENERATION_HISTORY_STORAGE_KEY = 'bio-demo-generation-history'
-export const NOTES_STORAGE_KEY = 'bio-demo-notes'
-export const PROJECT_FALLBACK_STORAGE_KEY = 'bio-demo-projects'
+export const SETTINGS_STORAGE_KEY = 'auto-showroom-settings'
+export const GALLERY_STORAGE_KEY = 'auto-showroom-gallery'
+export const GENERATION_HISTORY_STORAGE_KEY = 'auto-showroom-generation-history'
+export const NOTES_STORAGE_KEY = 'auto-showroom-notes'
+export const PROJECT_FALLBACK_STORAGE_KEY = 'auto-showroom-projects'
 const VITE_ENV = import.meta.env || {}
 export const SETTINGS_STORAGE_VERSION = 5
-export const UI_STATE_STORAGE_KEY = 'bio-demo-ui-state'
+export const UI_STATE_STORAGE_KEY = 'auto-showroom-ui-state'
 export const UI_STATE_STORAGE_VERSION = 1
 export const FAL_MODEL_OPTIONS = [
   { id: 'fal-ai/hunyuan3d/v2', label: 'Hunyuan3D v2', description: 'Tencent Hunyuan3D v2 through Fal.' },
@@ -39,7 +39,7 @@ export const LANGUAGE_OPTIONS = [
 ]
 export const LANGUAGE_IDS = new Set(LANGUAGE_OPTIONS.map((option) => option.id))
 
-export const CUSTOM_CELL_STORAGE_KEY = 'bio-demo-custom-cells'
+export const CUSTOM_CELL_STORAGE_KEY = 'auto-showroom-custom-vehicles'
 export const MAX_PERSISTED_IMAGE_EDGE = 1280
 export const COMPACT_PERSISTED_IMAGE_EDGE = 900
 export const MAX_PERSISTED_IMAGE_CHARS = 3_200_000
