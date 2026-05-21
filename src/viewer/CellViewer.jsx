@@ -1332,7 +1332,26 @@ export function CinematicLayerVisual({ imageUrl, selectedOrganelle, onSelectOrga
   )
 }
 
-export function CellScene({ selectedCell, modelCellId, referenceImageUrl, generatedModelUrl, selectedOrganelle, crossSection, autoRotate, hideOthers, proofMode, viewMode = 'layers', renderQuality, presentationMode = false, motionProfile = 'specimen', onSelectOrganelle, onExporterReady = null }) {
+function MicroscopeEffect({ mode }) {
+  const { gl, scene, camera } = useThree()
+
+  useEffect(() => {
+    if (mode === 'Texture Pass') {
+      // Enhance material visibility - increase saturation
+      gl.toneMappingExposure = 1.25
+    } else if (mode === 'Depth Preview') {
+      // Reduce colors for depth emphasis
+      gl.toneMappingExposure = 0.85
+    } else {
+      // Studio Preview - default
+      gl.toneMappingExposure = 1.08
+    }
+  }, [mode, gl])
+
+  return null
+}
+
+export function CellScene({ selectedCell, modelCellId, referenceImageUrl, generatedModelUrl, selectedOrganelle, crossSection, autoRotate, hideOthers, proofMode, viewMode = 'layers', selectedMicroscope = 'Studio Preview', renderQuality, presentationMode = false, motionProfile = 'specimen', onSelectOrganelle, onExporterReady = null }) {
   const isPlant = modelCellId === 'plant'
   const presentationRoot = useRef(null)
   const exportRoot = useRef(null)
@@ -1353,6 +1372,7 @@ export function CellScene({ selectedCell, modelCellId, referenceImageUrl, genera
       fallback={<CellFallback selectedCell={selectedCell} modelCellId={modelCellId} referenceImageUrl={referenceImageUrl} selectedOrganelle={selectedOrganelle} onSelectOrganelle={onSelectOrganelle} />}
     >
       {!presentationMode && <color attach="background" args={['#f5efdf']} />}
+      <MicroscopeEffect mode={selectedMicroscope} />
       <ambientLight intensity={0.82} />
       <directionalLight castShadow position={[4, 5, 5]} intensity={3.4} color="#fff7ed" shadow-mapSize={[1024, 1024]} />
       <directionalLight position={[-4.5, 2.6, 3]} intensity={1.65} color="#dbeafe" />

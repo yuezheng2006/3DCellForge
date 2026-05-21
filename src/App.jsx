@@ -1148,6 +1148,7 @@ function App() {
               setSelectedOrganelle={handleStageOrganelleSelect}
               crossSection={crossSection}
               setCrossSection={setCrossSection}
+              selectedMicroscope={selectedMicroscope}
               renderQuality={settings.quality}
               screenshotScale={settings.screenshotScale}
               customCells={customCells}

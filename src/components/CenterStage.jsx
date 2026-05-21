@@ -61,6 +61,7 @@ export function CenterStage({
   setSelectedOrganelle,
   crossSection,
   setCrossSection,
+  selectedMicroscope,
   renderQuality,
   screenshotScale = 1,
   customCells,
@@ -262,6 +263,7 @@ export function CenterStage({
                   hideOthers={effectiveHideOthers}
                   proofMode={effectiveProofMode}
                   viewMode={effectiveViewMode}
+                  selectedMicroscope={selectedMicroscope}
                   renderQuality={renderQuality}
                   presentationMode={demoMode}
                   motionProfile={sceneProfile.id}
