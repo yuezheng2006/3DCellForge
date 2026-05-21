@@ -1413,7 +1413,12 @@ export function CellFallback({ selectedCell, modelCellId, referenceImageUrl, sel
   if (referenceImageUrl) {
     return (
       <div className="cell-fallback upload-render-fallback" aria-label="Uploaded model image fallback">
-        <img src={referenceImageUrl} alt="Uploaded model reference" />
+        <div className="loading-overlay">
+          <div className="loading-spinner"></div>
+          <p className="loading-text">正在加载3D模型...</p>
+          <p className="loading-hint">模型文件较大，首次加载可能需要一些时间</p>
+        </div>
+        <img src={referenceImageUrl} alt="Uploaded model reference" style={{ opacity: 0.3 }} />
       </div>
     )
   }
@@ -1421,7 +1426,12 @@ export function CellFallback({ selectedCell, modelCellId, referenceImageUrl, sel
   if (visualCellId === 'plant') {
     return (
       <div className="cell-fallback plant-render-fallback" aria-label="Starter model image fallback">
-        <img src={plantCellRender} alt="Detailed starter model fallback render" />
+        <div className="loading-overlay">
+          <div className="loading-spinner"></div>
+          <p className="loading-text">正在加载3D汽车模型...</p>
+          <p className="loading-hint">模型文件较大，首次加载可能需要一些时间</p>
+        </div>
+        <img src={plantCellRender} alt="Detailed starter model fallback render" style={{ opacity: 0.3 }} />
       </div>
     )
   }

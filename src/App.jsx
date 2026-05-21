@@ -113,7 +113,7 @@ function App() {
   const [activePanel, setActivePanel] = useState(null)
   const [inspectorOpen, setInspectorOpen] = useState(false)
   const [demoMode, setDemoMode] = useState(false)
-  const [toast, setToast] = useState('3D汽车展厅已就绪')
+  const [toast, setToast] = useState('正在加载3D汽车展厅...')
   const [favoriteKey, setFavoriteKey] = useState(() => initialUiStateRef.current.favoriteKey)
   const [selectedMicroscope, setSelectedMicroscope] = useState(() => initialUiStateRef.current.selectedMicroscope)
   const [uploadedImage, setUploadedImage] = useState(() => getUploadPreviewFromCustomCells(initialCustomCellsRef.current))
@@ -271,6 +271,14 @@ function App() {
     if (available.includes(selectedOrganelle)) return
     setSelectedOrganelle(getDefaultOrganelle(selectedCell, customCells))
   }, [customCells, selectedCell, selectedOrganelle])
+
+  useEffect(() => {
+    // Update toast message once the app is fully initialized
+    const timer = setTimeout(() => {
+      setToast('3D汽车展厅已就绪')
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [])
 
   function handleSelectCell(cellId) {
     const nextCell = getCell(cellId, customCells)
