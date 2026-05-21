@@ -12,14 +12,14 @@ import { CellFallback, CellScene, CinematicLayerVisual, ViewerErrorBoundary } fr
 
 function ViewerControls({ crossSection, setCrossSection, viewMode, setViewMode, supportsPartControls, onModeChange }) {
   const modes = [
-    { id: 'solid', icon: Box, label: 'Solid view', status: 'Solid' },
-    { id: 'layers', icon: Layers3, label: 'X-Ray layer view', status: 'X-Ray' },
-    { id: 'focus', icon: CircleDot, label: 'Inspect focus view', status: 'Inspect' },
+    { id: 'solid', icon: Box, label: '实体视图', status: 'Solid' },
+    { id: 'layers', icon: Layers3, label: '透视分层视图', status: 'X-Ray' },
+    { id: 'focus', icon: CircleDot, label: '聚焦检查视图', status: 'Inspect' },
   ]
 
   return (
     <div className="viewer-controls">
-      <span>View Mode</span>
+      <span>视图模式</span>
       <div className="mode-buttons">
         {modes.map((mode) => {
           const Icon = mode.icon
@@ -41,8 +41,8 @@ function ViewerControls({ crossSection, setCrossSection, viewMode, setViewMode, 
         })}
       </div>
       {supportsPartControls && (
-        <label className="toggle-row" title="Cut into starter structural models">
-          <span>Cross-Section</span>
+        <label className="toggle-row" title="对预设车型进行剖面切割">
+          <span>剖面视图</span>
           <input
             type="checkbox"
             checked={crossSection}
@@ -90,7 +90,7 @@ export function CenterStage({
   const generatedModelUrl = getGeneratedModelUrl(cell)
   const generation = cell.custom ? cell.generation : null
   const generationProviderLabel = getProviderLabel(generation?.provider)
-  const generationFailureTitle = generation?.requestedProvider === 'auto' ? '3D generation failed' : `${generationProviderLabel} generation failed`
+  const generationFailureTitle = generation?.requestedProvider === 'auto' ? '3D 生成失败' : `${generationProviderLabel} 生成失败`
   const isCinematicCell = cell.custom && generation?.provider === 'cinematic'
   const supportsPartControls = !cell.custom && !generatedModelUrl && !isCinematicCell
   const effectiveAutoRotate = autoRotate || demoMode
@@ -283,8 +283,8 @@ export function CenterStage({
       )}
       {generationPending && (
         <div className="generation-overlay">
-          <strong>{generation.status === 'uploading' ? `Uploading to ${generationProviderLabel}` : `Generating with ${generationProviderLabel}`}</strong>
-          <span>{generation.message || 'Waiting for AI-generated GLB...'}</span>
+          <strong>{generation.status === 'uploading' ? `正在上传至 ${generationProviderLabel}` : `正在通过 ${generationProviderLabel} 生成`}</strong>
+          <span>{generation.message || '等待 AI 生成 3D 模型...'}</span>
           <div className="generation-meter">
             <i />
           </div>
@@ -293,15 +293,15 @@ export function CenterStage({
       {generationFailed && (
         <div className="generation-overlay failed">
           <strong>{generationFailureTitle}</strong>
-          <span>{generation.message || 'The saved upload failed before a GLB was returned.'}</span>
-          <button type="button" onClick={() => onRetryGeneration?.(cell.id)}>Retry Generation</button>
+          <span>{generation.message || '上传的文件在生成 GLB 前失败。'}</span>
+          <button type="button" onClick={() => onRetryGeneration?.(cell.id)}>重新生成</button>
         </div>
       )}
       {activeViewerError && !generationFailed && (
         <div className="generation-overlay failed">
           <strong>3D preview unavailable</strong>
           <span>{generatedModelUrl ? 'The saved GLB could not be loaded. Showing the saved source image or fallback model instead.' : activeViewerError}</span>
-          {cell.custom && !cell.reference && cell.imageUrl && <button type="button" onClick={() => onRetryGeneration?.(cell.id)}>Retry Generation</button>}
+          {cell.custom && !cell.reference && cell.imageUrl && <button type="button" onClick={() => onRetryGeneration?.(cell.id)}>重新生成</button>}
         </div>
       )}
       <div className="stage-status">
@@ -311,7 +311,7 @@ export function CenterStage({
       <div className={`stage-toolbar ${supportsPartControls ? 'with-structure' : 'compact-tools'}`}>
         <button type="button" className={autoRotate ? 'active' : ''} onClick={handleRotate} aria-pressed={autoRotate}>
           <Move3D size={14} />
-          Rotate
+          旋转
         </button>
         {supportsPartControls && (
           <button
@@ -319,10 +319,10 @@ export function CenterStage({
             className={isIsolated ? 'active' : ''}
             onClick={handleIsolate}
             aria-pressed={isIsolated}
-            title="Focus the selected starter model part"
+            title="聚焦选中的预设车型部件"
           >
             <Eye size={14} />
-            Focus Part
+            聚焦部件
           </button>
         )}
         {supportsPartControls && (
@@ -331,28 +331,28 @@ export function CenterStage({
             className={hideOthers ? 'active' : ''}
             onClick={handleHideOthers}
             aria-pressed={hideOthers}
-            title="Hide non-selected starter model parts"
+            title="隐藏未选中的预设车型部件"
           >
             <Layers3 size={14} />
-            Hide Parts
+            隐藏部件
           </button>
         )}
         <button type="button" onClick={handleResetView}>
           <RotateCcw size={14} />
-          Reset View
+          重置视图
         </button>
         <button type="button" className={proofMode ? 'active proof-active' : ''} onClick={handleProofMode} aria-pressed={proofMode}>
           <Box size={14} />
-          Inspect
+          检查
         </button>
         <span />
         <button type="button" onClick={handleScreenshot}>
           <Camera size={14} />
-          Screenshot
+          截图
         </button>
         <button type="button" onClick={onExport} disabled={!exportAvailable} title={exportReason}>
           <Upload size={14} />
-          3D Export
+          3D 导出
         </button>
       </div>
     </section>

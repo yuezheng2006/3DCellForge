@@ -135,8 +135,8 @@ export const SEEDED_GENERATED_CELLS = [
 export const KHRONOS_REFERENCE_CELLS = [
   {
     id: 'khronos-transmission-test',
-    name: 'Glass Body Kit',
-    type: 'Khronos PBR Reference',
+    name: '玻璃材质测试',
+    type: 'Khronos 材质参考',
     accent: '#72a4bf',
     custom: true,
     reference: true,
@@ -157,8 +157,8 @@ export const KHRONOS_REFERENCE_CELLS = [
   },
   {
     id: 'khronos-transmission-roughness',
-    name: 'Frosted Glass',
-    type: 'Khronos PBR Reference',
+    name: '磨砂玻璃测试',
+    type: 'Khronos 材质参考',
     accent: '#8eb4cf',
     custom: true,
     reference: true,
@@ -179,8 +179,8 @@ export const KHRONOS_REFERENCE_CELLS = [
   },
   {
     id: 'khronos-mosquito-amber',
-    name: 'Amber Specimen',
-    type: 'Khronos Bio Reference',
+    name: '琥珀标本模型',
+    type: 'Khronos 参考模型',
     accent: '#d18a42',
     custom: true,
     reference: true,
@@ -257,19 +257,19 @@ export const ORGANELLES = {
 export const ORGANELLE_ORDER = ['nucleus', 'lysosome', 'mitochondria', 'membrane', 'granules']
 
 export const MICROSCOPE_IMAGES = [
-  { label: 'Studio Preview', tone: 'light', note: 'Clean presentation view for screenshots.' },
-  { label: 'Texture Pass', tone: 'purple', note: 'Material and color separation preview.' },
-  { label: 'Depth Preview', tone: 'mono', note: 'Shape and relief readability preview.' },
+  { label: '工作室预览', tone: 'light', note: '适合截图的干净展示视角。' },
+  { label: '材质通道', tone: 'purple', note: '材质和颜色分离预览。' },
+  { label: '深度预览', tone: 'mono', note: '形状和立体感预览。' },
 ]
 
 export const WORKSPACE_PANELS = {
-  Gallery: 'Saved render angles, thumbnails, and exported presentation shots.',
-  Library: 'Showroom models, generated assets, local imports, and reference GLB files.',
-  Notebooks: 'Vehicle notes linked to the selected model and inspection part.',
-  Logs: 'Diagnostics, API request logs, and generation troubleshooting.',
-  Settings: 'Viewer quality, provider defaults, screenshot size, and export preferences.',
-  Compare: 'Side-by-side model comparison for shape, material, and generation quality.',
-  Profile: 'Current workspace: Auto Showroom 3D.',
+  Gallery: '保存的渲染角度、缩略图和导出的展示截图。',
+  Library: '展厅车型、生成资产、本地导入和参考 GLB 文件。',
+  Notebooks: '与当前车型和检查部件关联的笔记。',
+  Logs: '诊断信息、API 请求日志和生成问题排查。',
+  Settings: '查看器质量、服务商默认值、截图尺寸和导出偏好。',
+  Compare: '并排模型对比：形状、材质和生成质量。',
+  Profile: '当前工作区：3D 汽车展厅。',
 }
 
 export const CELL_PROFILES = {

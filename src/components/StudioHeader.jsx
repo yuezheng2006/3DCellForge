@@ -2,14 +2,14 @@ import { BookOpen, Box, ChevronDown, Grid3X3, Library, MonitorPlay, ScrollText, 
 
 const HEADER_TEXT = {
   en: {
-    title: 'Auto Showroom 3D',
-    subtitle: 'Explore, customize, and showcase vehicles in 3D',
-    Gallery: 'Gallery',
-    Library: 'Showroom',
-    Notebooks: 'Specs',
-    Logs: 'Logs',
-    Settings: 'Settings',
-    Demo: 'Demo',
+    title: '3D汽车展厅',
+    subtitle: '3D探索、定制和展示汽车',
+    Gallery: '展厅',
+    Library: '车型库',
+    Notebooks: '规格',
+    Logs: '日志',
+    Settings: '设置',
+    Demo: '演示',
   },
   zh: {
     title: '3D汽车展厅',

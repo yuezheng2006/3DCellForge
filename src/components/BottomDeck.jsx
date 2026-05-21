@@ -35,11 +35,11 @@ export function BottomDeck({
     <section className="bottom-deck">
       <div className="panel media-panel">
         <header className="panel-title">
-          <span>Asset Source</span>
+          <span>资产来源</span>
           <small>{latestUploadCell ? 5 : 4}</small>
         </header>
         <div className="generation-mode-row">
-          <span>Provider</span>
+          <span>生成服务</span>
           <div className="generation-mode-pills">
             {GENERATION_MODE_OPTIONS.map((mode) => (
               <button
@@ -48,7 +48,7 @@ export function BottomDeck({
                 className={generationMode === mode.id ? 'active' : ''}
                 onClick={() => {
                   onGenerationModeChange(mode.id)
-                  onNotify(`${mode.label} mode selected`)
+                  onNotify(`已选择 ${mode.label} 模式`)
                 }}
                 title={mode.description}
               >
@@ -76,14 +76,14 @@ export function BottomDeck({
                 className={uploadedImage ? `add-image active ${uploadedImage.url ? 'with-preview' : 'with-model'}` : 'add-image active with-model'}
                 style={uploadedImage?.url ? { '--upload-preview': `url(${uploadedImage.url})` } : undefined}
                 onClick={() => onOpenGenerationCell(latestUploadCell.id)}
-                title="Open latest uploaded model"
+                title="打开最新上传的模型"
               >
                 {uploadedImage?.url ? <Image size={16} /> : <Box size={16} />}
-                {latestUploadCell.name || uploadedImage?.name || 'Latest Asset'}
+                {latestUploadCell.name || uploadedImage?.name || '最新资产'}
               </button>
-              <button type="button" className="add-image upload-new" onClick={() => fileInputRef.current?.click()} title="Upload a new image or GLB">
+              <button type="button" className="add-image upload-new" onClick={() => fileInputRef.current?.click()} title="上传新的图片或 GLB">
                 <Upload size={16} />
-                New Upload
+                新上传
               </button>
             </>
           ) : (
@@ -93,7 +93,7 @@ export function BottomDeck({
               onClick={() => fileInputRef.current?.click()}
             >
               <Upload size={16} />
-              Add Image / GLB
+              添加图片 / GLB
             </button>
           )}
           <input
@@ -113,7 +113,7 @@ export function BottomDeck({
 
       <div className="panel compare-panel">
         <header className="panel-title">
-          <span>Compare Models</span>
+          <span>模型对比</span>
           <small>2</small>
         </header>
         <button type="button" className="compare-box" onClick={() => onCompare(compareTarget.id)}>

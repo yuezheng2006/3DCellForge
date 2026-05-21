@@ -8,11 +8,11 @@ export const SETTINGS_STORAGE_VERSION = 5
 export const UI_STATE_STORAGE_KEY = 'auto-showroom-ui-state'
 export const UI_STATE_STORAGE_VERSION = 1
 export const FAL_MODEL_OPTIONS = [
-  { id: 'fal-ai/hunyuan3d/v2', label: 'Hunyuan3D v2', description: 'Tencent Hunyuan3D v2 through Fal.' },
-  { id: 'fal-ai/trellis', label: 'TRELLIS', description: 'Image-to-3D with textured mesh output.' },
-  { id: 'fal-ai/triposr', label: 'TripoSR', description: 'Fast image reconstruction through Fal.' },
-  { id: 'tripo3d/tripo/v2.5/image-to-3d', label: 'Tripo3D v2.5', description: 'Fal-hosted Tripo3D image-to-3D.' },
-  { id: 'fal-ai/hyper3d/rodin', label: 'Hyper3D Rodin', description: 'Fal-hosted Rodin image-to-3D.' },
+  { id: 'fal-ai/hunyuan3d/v2', label: 'Hunyuan3D v2', description: '通过 Fal 使用腾讯 Hunyuan3D v2。' },
+  { id: 'fal-ai/trellis', label: 'TRELLIS', description: '图片转 3D，带纹理网格输出。' },
+  { id: 'fal-ai/triposr', label: 'TripoSR', description: '通过 Fal 快速图片重建。' },
+  { id: 'tripo3d/tripo/v2.5/image-to-3d', label: 'Tripo3D v2.5', description: 'Fal 托管的 Tripo3D 图片转 3D。' },
+  { id: 'fal-ai/hyper3d/rodin', label: 'Hyper3D Rodin', description: 'Fal 托管的 Rodin 图片转 3D。' },
 ]
 export const FAL_MODEL_IDS = new Set(FAL_MODEL_OPTIONS.map((option) => option.id))
 export const DEFAULT_FAL_MODEL = FAL_MODEL_OPTIONS[0].id
@@ -47,20 +47,20 @@ export const MODEL_API_BASE = VITE_ENV.VITE_MODEL_API_BASE || VITE_ENV.VITE_TRIP
 export const GENERATION_POLL_INTERVAL_MS = 3500
 export const GENERATION_TIMEOUT_MS = 8 * 60 * 1000
 export const GENERATION_PROVIDER_OPTIONS = [
-  { id: 'rodin', label: 'Hyper3D', description: 'Hyper3D Rodin cloud generation.' },
-  { id: 'auto', label: 'Auto', description: 'Hyper3D first, then Tripo, Fal, Hunyuan, and JS Depth backup.' },
-  { id: 'tripo', label: 'Tripo', description: 'Cloud generation.' },
-  { id: 'fal', label: 'Fal', description: 'Fal queue with selectable 3D models.' },
-  { id: 'hunyuan', label: 'Hunyuan', description: 'Local Hunyuan3D server.' },
+  { id: 'rodin', label: 'Hyper3D', description: 'Hyper3D Rodin 云端生成。' },
+  { id: 'auto', label: 'Auto', description: '优先 Hyper3D，然后 Tripo、Fal、Hunyuan 和 JS Depth 备选。' },
+  { id: 'tripo', label: 'Tripo', description: '云端生成。' },
+  { id: 'fal', label: 'Fal', description: 'Fal 队列，可选 3D 模型。' },
+  { id: 'hunyuan', label: 'Hunyuan', description: '本地 Hunyuan3D 服务器。' },
 ]
 export const GENERATION_PROVIDER_IDS = new Set(GENERATION_PROVIDER_OPTIONS.map((provider) => provider.id))
 export const GENERATION_MODE_OPTIONS = [
-  { id: 'rodin', label: 'Hyper3D', description: 'Hyper3D Rodin GLB generation.' },
-  { id: 'tripo', label: 'Tripo', description: 'Cloud GLB generation.' },
-  { id: 'fal', label: 'Fal', description: 'Fal.ai queue with selectable model.' },
-  { id: 'hunyuan', label: 'Hunyuan', description: 'Local Hunyuan3D GLB generation.' },
-  { id: 'cinematic', label: 'JS Depth', description: 'Browser-side image relief with layered PNG fallback.' },
-  { id: 'auto', label: 'Auto', description: 'Hyper3D, Tripo, Fal, Hunyuan, then JS Depth fallback.' },
-  { id: 'local', label: 'Local GLB', description: 'Import an existing GLB or GLTF file.' },
+  { id: 'rodin', label: 'Hyper3D', description: 'Hyper3D Rodin GLB 生成。' },
+  { id: 'tripo', label: 'Tripo', description: '云端 GLB 生成。' },
+  { id: 'fal', label: 'Fal', description: 'Fal.ai 队列，可选模型。' },
+  { id: 'hunyuan', label: 'Hunyuan', description: '本地 Hunyuan3D GLB 生成。' },
+  { id: 'cinematic', label: 'JS Depth', description: '浏览器端图片深度浮雕，分层 PNG 备选。' },
+  { id: 'auto', label: 'Auto', description: 'Hyper3D、Tripo、Fal、Hunyuan，然后 JS Depth 备选。' },
+  { id: 'local', label: '本地 GLB', description: '导入已有的 GLB 或 GLTF 文件。' },
 ]
 export const GENERATION_MODE_IDS = new Set(GENERATION_MODE_OPTIONS.map((mode) => mode.id))

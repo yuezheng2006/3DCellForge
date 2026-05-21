@@ -53,13 +53,13 @@ export function LeftSidebar({ selectedCell, setSelectedCell, customCells, onDele
         <header className="panel-title">
           <span>
             <SparklesIcon size={14} />
-            Model Library
+            模型库
           </span>
           <ChevronDown size={14} />
         </header>
         <div className="pinned-models">
           <div className="pinned-model-block">
-            <span className="model-section-label">{activeIsCustom ? 'Active Asset' : 'Active Starter'}</span>
+            <span className="model-section-label">{activeIsCustom ? '当前资产' : '当前车型'}</span>
             {renderCellRow(activeModel)}
           </div>
         </div>
@@ -67,7 +67,7 @@ export function LeftSidebar({ selectedCell, setSelectedCell, customCells, onDele
           {recentCells.length > 0 && (
             <div className="recent-cells">
               <div className="recent-toggle" aria-expanded="true">
-                <span>Saved Assets</span>
+                <span>已保存</span>
                 <small>{recentCells.length}</small>
                 <ChevronDown size={13} />
               </div>
@@ -77,7 +77,7 @@ export function LeftSidebar({ selectedCell, setSelectedCell, customCells, onDele
             </div>
           )}
           <div className="starter-cells">
-            <span className="model-section-label">Starter Models</span>
+            <span className="model-section-label">预设车型</span>
             <div className="starter-cell-list">
               {starterCells.map((cell) => renderCellRow(cell, { compact: true }))}
             </div>
@@ -85,8 +85,8 @@ export function LeftSidebar({ selectedCell, setSelectedCell, customCells, onDele
           {libraryCells.length === 0 && (
             <div className="library-empty compact-empty">
               <SparklesIcon size={16} />
-              <span>No saved uploads yet.</span>
-              <small>Use Asset Source to add your own image or GLB.</small>
+              <span>暂无已保存的模型</span>
+              <small>使用「资产来源」添加图片或 GLB 文件</small>
             </div>
           )}
         </div>
@@ -96,7 +96,7 @@ export function LeftSidebar({ selectedCell, setSelectedCell, customCells, onDele
         <header className="panel-title">
           <span>
             <Clock3 size={14} />
-            Generation Queue
+            生成队列
           </span>
           <small>{queueCount}</small>
         </header>

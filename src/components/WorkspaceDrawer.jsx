@@ -15,7 +15,7 @@ function findCell(cells, cellId) {
 }
 
 function formatDate(value) {
-  if (!value) return 'Not saved'
+  if (!value) return '未保存'
   return new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(new Date(value))
 }
 
@@ -30,19 +30,19 @@ function getModelUrl(cell) {
 }
 
 function getModelSource(cell) {
-  if (cell.reference) return 'Khronos glTF Sample Models'
-  if (cell.generation?.provider === 'local') return 'Local GLB import'
-  if (cell.generation?.provider === 'cinematic') return 'Browser JS Depth'
-  if (cell.custom) return `${cell.generation?.provider || 'AI'} generation`
-  return 'Procedural Three.js scene'
+  if (cell.reference) return 'Khronos glTF 示例模型'
+  if (cell.generation?.provider === 'local') return '本地 GLB 导入'
+  if (cell.generation?.provider === 'cinematic') return '浏览器 JS 深度'
+  if (cell.custom) return `${cell.generation?.provider || 'AI'} 生成`
+  return '程序化 Three.js 场景'
 }
 
 function getQualityLabel(cell) {
-  if (cell.reference) return 'Reference GLB'
-  if (cell.generation?.modelUrl) return 'GLB ready'
-  if (cell.generation?.status === 'failed') return 'Failed'
+  if (cell.reference) return '参考 GLB'
+  if (cell.generation?.modelUrl) return 'GLB 就绪'
+  if (cell.generation?.status === 'failed') return '失败'
   if (cell.generation?.status) return cell.generation.status
-  return 'Interactive'
+  return '交互式'
 }
 
 function getAssetPreviewUrl(cell) {
@@ -68,12 +68,12 @@ function getAssetTone(cell) {
 }
 
 function getAssetKind(cell) {
-  if (cell.reference) return 'Reference GLB'
-  if (cell.generation?.provider === 'local') return 'Local Import'
-  if (cell.generation?.provider === 'cinematic') return 'JS Depth Preview'
-  if (cell.generation?.modelUrl) return 'Generated GLB'
-  if (cell.custom) return 'Generated Asset'
-  return 'Starter Scene'
+  if (cell.reference) return '参考 GLB'
+  if (cell.generation?.provider === 'local') return '本地导入'
+  if (cell.generation?.provider === 'cinematic') return 'JS 深度预览'
+  if (cell.generation?.modelUrl) return '已生成 GLB'
+  if (cell.custom) return '已生成资产'
+  return '预设场景'
 }
 
 function getAssetRuntime(cell, generationHistory) {
@@ -188,20 +188,20 @@ export function WorkspaceDrawer({
             </span>
           </div>
           <div className="asset-stat-grid">
-            <span><strong>{modelUrl ? 'GLB' : 'Preview'}</strong><small>asset</small></span>
-            <span><strong>{getAssetRuntime(item, generationHistory)}</strong><small>runtime</small></span>
-            <span><strong>{taskId ? String(taskId).slice(0, 8) : 'none'}</strong><small>task</small></span>
+            <span><strong>{modelUrl ? 'GLB' : '预览'}</strong><small>资产</small></span>
+            <span><strong>{getAssetRuntime(item, generationHistory)}</strong><small>耗时</small></span>
+            <span><strong>{taskId ? String(taskId).slice(0, 8) : '无'}</strong><small>任务</small></span>
           </div>
-          <code className="asset-model-url">{modelUrl || item.referenceSource || item.type || 'Procedural preview only'}</code>
+          <code className="asset-model-url">{modelUrl || item.referenceSource || item.type || '仅程序化预览'}</code>
           <div className="asset-library-actions">
-            <button type="button" onClick={() => onSelectCell(item.id)}>Open</button>
+            <button type="button" onClick={() => onSelectCell(item.id)}>打开</button>
             <button type="button" disabled={!modelUrl} onClick={() => onCopyText(modelUrl, 'Model URL copied')}>
               <Copy size={12} />
               URL
             </button>
             <button type="button" disabled={!canCompare} onClick={() => onRunProviderCompare(item.id)}>
               <RotateCcw size={12} />
-              Compare
+              对比
             </button>
             {canDelete && (
               <button type="button" className="danger" onClick={() => onDeleteCustomCell?.(item.id)}>
@@ -226,21 +226,21 @@ export function WorkspaceDrawer({
             </div>
           </div>
           <div className="drawer-actions">
-            <button type="button" className="drawer-primary" onClick={onSaveGallery}>Save View</button>
-            <button type="button" className="drawer-secondary" onClick={onExport} disabled={!exportAvailable} title={exportReason}>Export GLB</button>
+            <button type="button" className="drawer-primary" onClick={onSaveGallery}>保存视图</button>
+            <button type="button" className="drawer-secondary" onClick={onExport} disabled={!exportAvailable} title={exportReason}>导出 GLB</button>
           </div>
           {uploadedImage && (
             <div className="uploaded-tile" style={{ '--upload-preview': `url(${uploadedImage.url})` }}>
               <span />
               <div>
                 <strong>{uploadedImage.name}</strong>
-                <small>Attached source reference</small>
+                <small>已附加的参考来源</small>
               </div>
             </div>
           )}
           <div className="drawer-list">
             {galleryItems.length === 0 ? (
-              <p className="empty-state">No saved views yet.</p>
+              <p className="empty-state">暂无保存的视图。</p>
             ) : (
               galleryItems.map((item) => {
                 const itemCell = findCell(allCells, item.cellId)
@@ -256,11 +256,11 @@ export function WorkspaceDrawer({
                       <small>{getQualityLabel({ generation: { provider: item.generationProvider, modelUrl: item.modelUrl } })} · {formatDate(item.createdAt)}</small>
                     </div>
                     <div className="gallery-shot-actions">
-                      <button type="button" onClick={() => onRestoreGalleryItem(item)}>Open</button>
+                      <button type="button" onClick={() => onRestoreGalleryItem(item)}>打开</button>
                       <button
                         type="button"
                         onClick={() => {
-                          const title = window.prompt('Rename saved view', item.title || `${itemCell.name} / ${itemDetail.title}`)
+                          const title = window.prompt('重命名保存的视图', item.title || `${itemCell.name} / ${itemDetail.title}`)
                           if (title !== null) onRenameGalleryItem(item.id, title)
                         }}
                       >
@@ -280,8 +280,8 @@ export function WorkspaceDrawer({
           </div>
           {galleryItems.length > 0 && (
             <div className="drawer-actions">
-              <button type="button" className="drawer-secondary" onClick={onExportGallery}>Export Gallery</button>
-              <button type="button" className="drawer-secondary" onClick={onClearGallery}>Clear Gallery</button>
+              <button type="button" className="drawer-secondary" onClick={onExportGallery}>导出展厅</button>
+              <button type="button" className="drawer-secondary" onClick={onClearGallery}>清空展厅</button>
             </div>
           )}
         </div>
@@ -292,24 +292,24 @@ export function WorkspaceDrawer({
       return (
         <div className="drawer-content asset-library-drawer">
           <div className="asset-library-summary">
-            <span><strong>{generatedAssets.length}</strong><small>generated/imported</small></span>
-            <span><strong>{readyGeneratedAssets.length}</strong><small>ready GLB</small></span>
-            <span><strong>{referenceAssets.length}</strong><small>references</small></span>
+            <span><strong>{generatedAssets.length}</strong><small>已生成/导入</small></span>
+            <span><strong>{readyGeneratedAssets.length}</strong><small>就绪 GLB</small></span>
+            <span><strong>{referenceAssets.length}</strong><small>参考模型</small></span>
           </div>
 
           <section className="asset-library-section">
             <header className="asset-section-head">
               <span>
                 <Box size={15} />
-                <strong>Generated & Imported Assets</strong>
+                <strong>已生成和导入的资产</strong>
               </span>
-              <small>{readyGeneratedAssets.length}/{generatedAssets.length} ready</small>
+              <small>{readyGeneratedAssets.length}/{generatedAssets.length} 就绪</small>
             </header>
             {generatedAssets.length === 0 ? (
               <div className="asset-library-empty">
                 <Image size={18} />
-                <span>No generated assets yet.</span>
-                <small>Upload an image or import a GLB from Asset Source.</small>
+                <span>暂无已生成的资产。</span>
+                <small>从「资产来源」上传图片或导入 GLB 文件。</small>
               </div>
             ) : (
               <div className="asset-card-grid">
@@ -322,9 +322,9 @@ export function WorkspaceDrawer({
             <header className="asset-section-head">
               <span>
                 <Layers3 size={15} />
-                <strong>Khronos Reference GLB</strong>
+                <strong>Khronos 参考 GLB</strong>
               </span>
-              <small>material checks</small>
+              <small>材质检查</small>
             </header>
             <div className="asset-card-grid compact">
               {referenceAssets.map((item) => renderAssetCard(item, { compact: true }))}
@@ -333,7 +333,7 @@ export function WorkspaceDrawer({
 
           <details className="asset-library-section starter-assets">
             <summary>
-              <span>Starter procedural scenes</span>
+              <span>预设程序化场景</span>
               <small>{starterAssets.length}</small>
             </summary>
             <div className="starter-asset-grid">
@@ -361,23 +361,23 @@ export function WorkspaceDrawer({
             <textarea
               value={noteValue}
               onChange={(event) => onUpdateNote(noteKey, event.target.value)}
-              placeholder="Record observations, questions, or narration notes..."
+              placeholder="记录观察、问题或说明笔记..."
             />
           </label>
           <div className="drawer-actions three">
-            <button type="button" className="drawer-primary" onClick={onGenerateNote}>Generate Draft</button>
-            <button type="button" className="drawer-secondary" onClick={onCopyNote}>Copy</button>
-            <button type="button" className="drawer-secondary" onClick={onExportNote}>Export MD</button>
+            <button type="button" className="drawer-primary" onClick={onGenerateNote}>生成草稿</button>
+            <button type="button" className="drawer-secondary" onClick={onCopyNote}>复制</button>
+            <button type="button" className="drawer-secondary" onClick={onExportNote}>导出 MD</button>
           </div>
           <div className="drawer-meta inline">
-            <span>{noteValue.length} chars</span>
-            <span>Autosaved locally</span>
-            <span>{Object.keys(notes).length} notes</span>
+            <span>{noteValue.length} 字符</span>
+            <span>本地自动保存</span>
+            <span>{Object.keys(notes).length} 条笔记</span>
           </div>
           <div className="note-archive">
-            <strong>Archive</strong>
+            <strong>归档</strong>
             {noteEntries.length === 0 ? (
-              <p className="empty-state">No archived notes yet.</p>
+              <p className="empty-state">暂无归档笔记。</p>
             ) : (
               noteEntries.slice(0, 8).map(([key, value]) => {
                 const [cellId, organelleId] = key.split(':')
@@ -412,22 +412,22 @@ export function WorkspaceDrawer({
         <div className="drawer-content">
           <div className="settings-health">
             <div>
-              <strong>Diagnostic Logs</strong>
-              <small>{serverLogs?.file || '.logs/3d-model-studio-api.log'} · {entries.length} entries</small>
+              <strong>诊断日志</strong>
+              <small>{serverLogs?.file || '.logs/3d-model-studio-api.log'} · {entries.length} 条记录</small>
             </div>
             <button type="button" className="drawer-secondary" onClick={onRefreshServerLogs}>
               <RefreshCw size={13} />
-              Refresh
+              刷新
             </button>
             {serverLogs?.error && <p className="empty-state">{serverLogs.error}</p>}
             <div className="drawer-actions">
-              <button type="button" className="drawer-primary" onClick={onExportDiagnostics}>Export Diagnostics</button>
-              <button type="button" className="drawer-secondary" onClick={onRefreshApiHealth}>Check API</button>
+              <button type="button" className="drawer-primary" onClick={onExportDiagnostics}>导出诊断信息</button>
+              <button type="button" className="drawer-secondary" onClick={onRefreshApiHealth}>检查 API</button>
             </div>
           </div>
           <div className="log-list">
             {entries.length === 0 ? (
-              <p className="empty-state">No server log entries yet.</p>
+              <p className="empty-state">暂无服务器日志。</p>
             ) : (
               entries.slice().reverse().map((entry, index) => (
                 <article key={`${entry.ts}-${entry.requestId || index}`} className={`log-row ${entry.level || 'info'}`}>
@@ -443,13 +443,13 @@ export function WorkspaceDrawer({
           <div className="history-panel">
             <div className="project-manager-head">
               <div>
-                <strong>Frontend Generation History</strong>
-                <small>{generationHistory.length} local generation records.</small>
+                <strong>前端生成历史</strong>
+                <small>{generationHistory.length} 条本地生成记录。</small>
               </div>
-              <button type="button" className="drawer-secondary" disabled={generationHistory.length === 0} onClick={onClearGenerationHistory}>Clear</button>
+              <button type="button" className="drawer-secondary" disabled={generationHistory.length === 0} onClick={onClearGenerationHistory}>清空</button>
             </div>
             {generationHistory.length === 0 ? (
-              <p className="empty-state">No frontend generation history yet.</p>
+              <p className="empty-state">暂无前端生成历史。</p>
             ) : (
               <div className="history-list">
                 {generationHistory.slice(0, 10).map((item) => (
@@ -473,15 +473,15 @@ export function WorkspaceDrawer({
         <div className="drawer-content settings-list">
           <label className="settings-row">
             <span>
-              <strong>Cross-Section</strong>
-              <small>Keep the cutaway view enabled.</small>
+              <strong>剖面视图</strong>
+              <small>保持剖面视图开启。</small>
             </span>
             <input type="checkbox" checked={crossSection} onChange={(event) => onSetCrossSection(event.target.checked)} />
           </label>
           <div className="settings-row">
             <span>
-              <strong>Render Quality</strong>
-              <small>Balanced is faster; high uses denser DPR.</small>
+              <strong>渲染质量</strong>
+              <small>均衡模式更快；高质量使用更高 DPR。</small>
             </span>
             <div className="segmented">
               {['balanced', 'high'].map((quality) => (
@@ -498,8 +498,8 @@ export function WorkspaceDrawer({
           </div>
           <label className="settings-row">
             <span>
-              <strong>Default Generation</strong>
-              <small>Used by the upload button before picking a file.</small>
+              <strong>默认生成方式</strong>
+              <small>上传按钮在选择文件前使用的默认方式。</small>
             </span>
             <select
               className="settings-select"
@@ -513,8 +513,8 @@ export function WorkspaceDrawer({
           </label>
           <div className="settings-row">
             <span>
-              <strong>Screenshot Size</strong>
-              <small>Exports a larger PNG from the WebGL canvas.</small>
+              <strong>截图尺寸</strong>
+              <small>从 WebGL 画布导出更大的 PNG。</small>
             </span>
             <div className="segmented segmented-three">
               {SCREENSHOT_SCALE_OPTIONS.map((option) => (
@@ -531,8 +531,8 @@ export function WorkspaceDrawer({
           </div>
           <div className="settings-row">
             <span>
-              <strong>Language</strong>
-              <small>Stores the preferred UI language for the workspace.</small>
+              <strong>语言</strong>
+              <small>存储工作区首选的界面语言。</small>
             </span>
             <div className="segmented">
               {LANGUAGE_OPTIONS.map((option) => (
@@ -549,15 +549,15 @@ export function WorkspaceDrawer({
           </div>
           <label className="settings-row">
             <span>
-              <strong>Compact UI</strong>
-              <small>Slightly tighter panels for smaller screens.</small>
+              <strong>紧凑界面</strong>
+              <small>为小屏幕稍微收紧面板间距。</small>
             </span>
             <input type="checkbox" checked={settings.compactUi} onChange={(event) => onUpdateSettings({ ...settings, compactUi: event.target.checked })} />
           </label>
           <label className="settings-row">
             <span>
-              <strong>Fal Model</strong>
-              <small>Used when the Fal or Auto provider reaches Fal.</small>
+              <strong>Fal 模型</strong>
+              <small>当 Fal 或 Auto 服务商使用 Fal 时选用的模型。</small>
             </span>
             <select
               className="settings-select"
@@ -571,12 +571,12 @@ export function WorkspaceDrawer({
           </label>
           <div className="settings-health">
             <div>
-              <strong>API Health</strong>
-              <small>{apiHealth?.checkedAt ? `Checked ${formatDate(apiHealth.checkedAt)}` : 'Not checked yet'}</small>
+              <strong>API 健康状态</strong>
+              <small>{apiHealth?.checkedAt ? `已检查 ${formatDate(apiHealth.checkedAt)}` : '尚未检查'}</small>
             </div>
             <button type="button" className="drawer-secondary" onClick={onRefreshApiHealth}>
               <RefreshCw size={13} />
-              Refresh
+              刷新
             </button>
             {apiHealth?.error ? (
               <p className="empty-state">{apiHealth.error}</p>
@@ -585,15 +585,15 @@ export function WorkspaceDrawer({
                 {Object.entries(apiHealth?.providers || {}).map(([id, provider]) => (
                   <span key={id} className={provider.configured ? 'healthy' : 'missing'}>
                     <strong>{id}</strong>
-                    <small>{provider.configured ? 'configured' : 'missing key/server'}</small>
+                    <small>{provider.configured ? '已配置' : '缺少密钥/服务器'}</small>
                   </span>
                 ))}
               </div>
             )}
           </div>
           <div className="drawer-actions">
-            <button type="button" className="drawer-secondary" onClick={onClearWorkspaceCache}>Clear Cache</button>
-            <button type="button" className="drawer-secondary danger" onClick={onResetWorkspace}>Reset Data</button>
+            <button type="button" className="drawer-secondary" onClick={onClearWorkspaceCache}>清除缓存</button>
+            <button type="button" className="drawer-secondary danger" onClick={onResetWorkspace}>重置数据</button>
           </div>
         </div>
       )
@@ -623,8 +623,8 @@ export function WorkspaceDrawer({
             ))}
           </div>
           <div className="drawer-actions">
-            <button type="button" className="drawer-primary" onClick={() => onSelectCell(compareCell)}>Open Compared Model</button>
-            <button type="button" className="drawer-secondary" onClick={() => onSetCompareCell(profile.compareTarget)}>Reset Target</button>
+            <button type="button" className="drawer-primary" onClick={() => onSelectCell(compareCell)}>打开对比模型</button>
+            <button type="button" className="drawer-secondary" onClick={() => onSetCompareCell(profile.compareTarget)}>重置目标</button>
           </div>
         </div>
       )
@@ -636,42 +636,42 @@ export function WorkspaceDrawer({
     return (
       <div className="drawer-content">
         <div className="profile-stats">
-          <span><strong>{allCells.length}</strong><small>models</small></span>
-          <span><strong>{galleryItems.length}</strong><small>saved</small></span>
-          <span><strong>{generationHistory.length}</strong><small>runs</small></span>
+          <span><strong>{allCells.length}</strong><small>模型</small></span>
+          <span><strong>{galleryItems.length}</strong><small>已保存</small></span>
+          <span><strong>{generationHistory.length}</strong><small>运行次数</small></span>
         </div>
         <div className="model-inspector">
           <div>
-            <strong>Model Inspector</strong>
+            <strong>模型检查器</strong>
             <small>{cell.name} · {getQualityLabel(cell)}</small>
           </div>
           <dl>
-            <dt>Source</dt>
+            <dt>来源</dt>
             <dd>{getModelSource(cell)}</dd>
-            <dt>Provider</dt>
+            <dt>服务商</dt>
             <dd>{cell.generation?.provider || 'built-in'}</dd>
-            <dt>Status</dt>
+            <dt>状态</dt>
             <dd>{cell.generation?.status || 'interactive'}</dd>
-            <dt>Model URL</dt>
+            <dt>模型 URL</dt>
             <dd>{modelUrl || 'procedural scene'}</dd>
-            <dt>Task</dt>
+            <dt>任务</dt>
             <dd>{cell.generation?.taskId || 'none'}</dd>
           </dl>
           <div className="drawer-actions">
-            <button type="button" className="drawer-secondary" disabled={!modelUrl} onClick={() => onCopyText(modelUrl, 'Model URL copied')}>Copy URL</button>
-            <button type="button" className="drawer-primary" disabled={!cell.custom || !cell.imageUrl} onClick={() => onRunProviderCompare(cell.id)}>Provider Compare</button>
+            <button type="button" className="drawer-secondary" disabled={!modelUrl} onClick={() => onCopyText(modelUrl, 'Model URL copied')}>复制 URL</button>
+            <button type="button" className="drawer-primary" disabled={!cell.custom || !cell.imageUrl} onClick={() => onRunProviderCompare(cell.id)}>服务商对比</button>
           </div>
         </div>
         <div className="project-manager">
           <div className="project-manager-head">
             <div>
-              <strong>Projects</strong>
-              <small>IndexedDB snapshots of the full workspace.</small>
+              <strong>项目</strong>
+              <small>完整工作区的 IndexedDB 快照。</small>
             </div>
-            <button type="button" className="drawer-primary" onClick={onSaveProject}>Save Project</button>
+            <button type="button" className="drawer-primary" onClick={onSaveProject}>保存项目</button>
           </div>
           {projects.length === 0 ? (
-            <p className="empty-state">No saved projects yet.</p>
+            <p className="empty-state">暂无保存的项目。</p>
           ) : (
             <div className="project-list">
               {projects.map((project) => (
@@ -679,10 +679,10 @@ export function WorkspaceDrawer({
                   {project.thumbnailUrl ? <img src={project.thumbnailUrl} alt={`${project.name} project thumbnail`} /> : <CellThumb cell={cell} />}
                   <div>
                     <strong>{project.name}</strong>
-                    <small>{project.summary || '3D Model Studio workspace'} · {formatDate(project.savedAt)}</small>
+                    <small>{project.summary || '3D 模型工作室工作区'} · {formatDate(project.savedAt)}</small>
                   </div>
                   <div className="project-actions">
-                    <button type="button" onClick={() => onLoadProject(project.id)}>Load</button>
+                    <button type="button" onClick={() => onLoadProject(project.id)}>加载</button>
                     <button type="button" onClick={() => onExportProject(project)}>
                       <Download size={12} />
                     </button>
@@ -698,13 +698,13 @@ export function WorkspaceDrawer({
         <div className="history-panel">
           <div className="project-manager-head">
             <div>
-              <strong>Generation History</strong>
-              <small>Provider, duration, result, and retry context.</small>
+              <strong>生成历史</strong>
+              <small>服务商、耗时、结果和重试上下文。</small>
             </div>
-            <button type="button" className="drawer-secondary" disabled={generationHistory.length === 0} onClick={onClearGenerationHistory}>Clear</button>
+            <button type="button" className="drawer-secondary" disabled={generationHistory.length === 0} onClick={onClearGenerationHistory}>清空</button>
           </div>
           {latestHistory.length === 0 ? (
-            <p className="empty-state">No generation runs yet.</p>
+            <p className="empty-state">暂无生成记录。</p>
           ) : (
             <div className="history-list">
               {latestHistory.map((item) => (
@@ -719,8 +719,8 @@ export function WorkspaceDrawer({
             </div>
           )}
         </div>
-        <p className="drawer-copy">Pinned part: {savedFavorite}</p>
-        <p className="drawer-copy">Source: {profile.occurs}</p>
+        <p className="drawer-copy">固定部件: {savedFavorite}</p>
+        <p className="drawer-copy">来源: {profile.occurs}</p>
       </div>
     )
   }
@@ -732,14 +732,14 @@ export function WorkspaceDrawer({
           <strong>{activePanel}</strong>
           <span>{WORKSPACE_PANELS[activePanel]}</span>
         </div>
-        <button type="button" onClick={onClose} aria-label="Close panel">
+        <button type="button" onClick={onClose} aria-label="关闭面板">
           <X size={15} />
         </button>
       </header>
       <div className="drawer-meta">
         <span>{cell.name}</span>
         <span>{detail.title}</span>
-        <span>Viewer ready</span>
+        <span>查看器就绪</span>
       </div>
       {renderContent()}
     </motion.section>

@@ -1522,6 +1522,12 @@ button:disabled,
   display: none;
 }
 
+.cell-viewer.webgl-ready.has-glb > .cell-fallback {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
 .cell-viewer > div:not(.cell-fallback) {
   position: absolute !important;
   inset: 0;
@@ -5499,6 +5505,15 @@ input:focus-visible + i {
   background: rgba(243, 237, 223, 0.95);
   z-index: 10;
   gap: 16px;
+  pointer-events: none;
+}
+
+.cell-fallback .loading-overlay {
+  z-index: 10;
+}
+
+.cell-viewer .cell-fallback {
+  z-index: 2;
 }
 
 .loading-spinner {
