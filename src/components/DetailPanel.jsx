@@ -21,7 +21,7 @@ export function DetailPanel({ selectedCell, favoriteKey, setFavoriteKey, customC
         <header className="detail-title">
           <span>
             <Info size={14} />
-            Asset Details
+            资产详情
           </span>
           <button type="button" className={isFavorite ? 'detail-fav active' : 'detail-fav'} onClick={toggleFavorite} aria-pressed={isFavorite}>
             <Heart size={15} fill={isFavorite ? 'currentColor' : 'none'} />
@@ -53,7 +53,7 @@ export function DetailPanel({ selectedCell, favoriteKey, setFavoriteKey, customC
         <header className="panel-title">
           <span>
             <Bookmark size={14} />
-            Object Description
+            对象描述
           </span>
         </header>
         <p>{metadata.description}</p>
@@ -64,7 +64,7 @@ export function DetailPanel({ selectedCell, favoriteKey, setFavoriteKey, customC
         <header className="panel-title">
           <span>
             <Tags size={14} />
-            Tags
+            标签
           </span>
         </header>
         <div className="asset-tag-list">
@@ -74,7 +74,7 @@ export function DetailPanel({ selectedCell, favoriteKey, setFavoriteKey, customC
         </div>
         <p>
           <Sparkles size={13} />
-          Inferred from {metadata.insightSource}.
+          推断自{metadata.insightSource}。
         </p>
       </section>
     </aside>

@@ -16,3 +16,18 @@ export function storeValue(key, value) {
     return false
   }
 }
+
+export function clearAutoShowroomStorage() {
+  try {
+    const keys = Object.keys(window.localStorage)
+    const autoShowroomKeys = keys.filter(key => key.startsWith('auto-showroom-'))
+
+    autoShowroomKeys.forEach(key => {
+      window.localStorage.removeItem(key)
+    })
+
+    return { success: true, clearedCount: autoShowroomKeys.length, keys: autoShowroomKeys }
+  } catch (error) {
+    return { success: false, error: error.message }
+  }
+}
